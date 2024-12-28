@@ -17,8 +17,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from hello_world import views as index_views
+# Following the format we used to import our index views, 
+# import views from about and alias them as about_views.
+from about import views as about_views
 
+# Django checks each of the URLs in the urls.py file in order. 
+# For this simple project, it does not matter whether hello/ is above or below admin/. 
+# For more complex projects, though, you may need to give attention to the order in which your URLs appear. 
+# For the moment, just remember to keep admin/ at the bottom, as shown.
 urlpatterns = [
-    path('', index_views.index, name='index'),
+    path('hello/', index_views.index, name='index'),
+    # Now add a path to the urlpatterns. The path should be 'about/'.
+    # The second argument should follow a similar format to our homepage. 
+    # Check the about/views.py file again if you need to see what the function is called. 
+    # Give it the name of 'about'.
+    path('about/', about_views.about_me, name='about'),
     path('admin/', admin.site.urls),
 ]
