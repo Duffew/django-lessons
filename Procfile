@@ -1,0 +1,1 @@
+web: guncorn my_project.wsgi
